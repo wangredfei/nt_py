@@ -1,10 +1,12 @@
 # **************************作业
-1.
+#1.
 x = int(input("第一个整数："))
 y = int(input("第二个整数："))
 z = pow(x,y)
-print(z)
-2. 
+zz = x + y
+print('和为'zz)
+print("x的y次方为"z)
+#2. 
 h = int(input("小时： "))
 m = int(input("分钟： "))
 s = int(input(" 秒 ： "))
@@ -19,7 +21,7 @@ ybg = salary*0.02+3
 zfg = salary*0.12
 # 单位
 yld = salary*0.19
-gsd = salary*0.05
+gsd = salary*0.005
 ybd = salary*0.10
 zfd = salary*0.12
 
