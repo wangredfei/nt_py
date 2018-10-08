@@ -39,4 +39,3 @@ print("养老：%d,工商：%d,医疗：%d,住房：%d"%(yl,gs,yb,zf))
 print("个人总额%d" % grze)
 print("单位总额%d" % gsze)
 print("公司收到%d" % gjze)
- 
