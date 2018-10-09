@@ -17,6 +17,7 @@ elif l > 15:
 else:
     print("您的输入有误，请从新输入")
 '''
+
 # 2.输入一个学生的三科成绩：
     # 1.打印出最高分是多少分
     # 2.打印出最低分是多少分
@@ -43,7 +44,18 @@ elif grade3 <= grade2 and grade3 <= grade1:
 average = (grade1 + grade2 + grade3)/3
 print("平均分为%.2f"%average)
 '''
-# 函数
+# 第二种方法
+'''
+grade1 = int(input("第一科成绩： "))
+grade2 = int(input("第二科成绩： "))
+grade3 = int(input("第三科成绩： "))
+m = grade1
+if grade2 > grade1:
+    m = grade2
+if grade3 > grade1:
+    m = grade3
+'''
+# 第三种函数
 '''
 grade1 = int(input("第一科成绩： "))
 grade2 = int(input("第二科成绩： "))
@@ -87,9 +99,10 @@ elif BIM >= 24:
 #     #        #
 #     ##########
 # 如果输入的数字越大，则此矩形会越宽
+'''
 d = int (input("宽度： "))
 print("#"*d)
 print("#"+" "*(d-2)+"#")
 print("#"+" "*(d-2)+"#")
 print("#"*d)
-
+'''
