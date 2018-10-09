@@ -13,3 +13,4 @@ if len(s) % 2 == 1 :
     print(s[a])
 else :
     pass
+    

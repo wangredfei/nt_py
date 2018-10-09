@@ -17,3 +17,4 @@ if s.isdigit() :
     else:
         print("=")
     # print(bool(s>100))
+    
