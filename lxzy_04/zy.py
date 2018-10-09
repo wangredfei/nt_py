@@ -92,7 +92,6 @@ if n.isdigit():
     i = 1
     while i <= n:
         if i == 1 or i == n:
-            
             j = 1
             while j <= n:
                 print("#",end="")
@@ -111,6 +110,7 @@ if n.isdigit():
 else :
     print("您输入的有误，请输入一个整数")
 '''
+
 '''
 # 用打印加函数的方法
 n = input("请输入一个整数： ")
