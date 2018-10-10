@@ -16,7 +16,7 @@
 #       #    #
 #       #    #
 #       ######
-
+''' 
 # 纯函数
 n = input("请输入一个整数： ")
 # 判断输出的是否为整数
@@ -48,16 +48,18 @@ else :
 # 用打印加函数的方法
 n = input("请输入一个整数： ")
 if n.isdigit():
-    i = 1 
+    i = 2 
     n = int(n)
     print("#" * n )
-    while i <= n-2 :
+    while i < n :
         print("#"+" "*(n-2)+"#")
         i += 1
-    print("#" * n )
+    if n > 1:
+        print("#" * n )
+
 else :
     print("输入有误")  
-'''  
+ 
 '''
 # 用 for 写
 
