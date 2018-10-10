@@ -27,11 +27,10 @@ print()
 #      6 7 8 9 10
 
 i = 1
-
 while i <= 20:
+    print("%2d" % i, end=" ")
+    # 每第五个后面打印一个换行
     if i % 5 == 0 :
-        print("%2d" % i)
-    else:
-        print("%2d" % i,end=" ")
+        print()
     i += 1
 print()
