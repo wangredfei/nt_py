@@ -1,4 +1,5 @@
-# l = [x for x in range(101) if x % i != 0  for i in range(2,x-1) ]
+# 5. 把 0 ~ 100 之 间的所有素数存于一个列表中  
+#     即: L = [2, 3, 5, 7, 11, ..... 97]
 l = []
 for i in range(101):
     if i == 0 or i == 1:
