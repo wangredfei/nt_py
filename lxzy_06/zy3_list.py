@@ -22,5 +22,5 @@ for i in l :
         l3.append(i)
 print(l1)
 print(l2)
-
+print(l3)
 # 总结一下.想要去除重复,要想到 in  \ not in 
