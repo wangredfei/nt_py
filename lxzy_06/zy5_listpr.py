@@ -2,14 +2,11 @@
 #     即: L = [2, 3, 5, 7, 11, ..... 97]
 l = []
 for i in range(101):
-    if i == 0 or i == 1:
-        continue
-    elif i == 2 : 
+    if i < 2: # 不是素数
+        continue　　#继续
+    for x in range(2,i):# 依次除以2~i-1, 当是2的时候for终止循环跳刀else
+        if i % x == 0 :# 一定不是素数
+            break# 跳出
+    else:# 一定是素数 加进去
         l.append(i)
-    else:
-        for x in range(2,i):
-            if i % x == 0 :
-                break
-        else:
-            l.append(i)
 print(l)
