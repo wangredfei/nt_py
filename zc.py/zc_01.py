@@ -72,8 +72,8 @@ goods = [
     {"name":"美女","price": 98},
         ] 
 # 打印价目表
-print("价目表".center(20))
-print("-"*20)
+print("价目表".center(16))
+print("-"*16)
 # 定义序号
 i = 1
 # 创建列表让序号和键值关联
@@ -96,8 +96,8 @@ for good in goods:
     n_name.append( n_name_d ) 
     # 计数
     i += 1
-print(l)
-print(n_name)
+# print(l)
+# print(n_name)
 
 # 输入总资产
 m = int(input("请输入总资产: "))
@@ -107,29 +107,39 @@ gwc = []
 g_pay = 0
 while 1:
     pay = int(input("请输入您想选购的商品(输入-1退出): "))
+    # 定义一个字典用于存放购物车统计
+    count_g = {}    
     # 判断输入-1退出
     if pay == -1 :
-        print("购买成功,您购买了%s,还剩余%d元" % (gwc , m - g_pay))
+        print("购买成功,您购买了%s,还剩余%d元" % ( count_g, m - g_pay))
         break
-    # 判断输入值与价格和名称的关系
-    for q in l :
-        # 打印键值
-        for k,v in q.items():
-            if pay == k:
-                g_pay += v
-    for p in n_name:
-        for k2,v2 in p.items():
-            if pay == k2:
-                gwc.append(v2)
-    
-    # 判断购买所花金额是否超出 
-    if g_pay > m :
-        print("您的余额不足,购买失败") 
-        print("您购买了%s,超出了%d元" % (gwc,g_pay-m))  
-        break
-    else :    
-        print("购买成功,您购买了",gwc)
+    elif 1 <= pay <=4:
+        # 判断输入值与价格和名称的关系
+        for q in l :
+            # 打印键值
+            for k,v in q.items():
+                if pay == k:
+                    g_pay += v
+        for p in n_name:
+            for k2,v2 in p.items():
+                if pay == k2:
+                    gwc.append(v2)
+        # 计数
+        for sp in gwc :
+            if sp not in count_g:
+                count_g[sp] = gwc.count(sp)
+        # 判断购买所花金额是否超出 
         
+        if g_pay > m :
+            print("") 
+            print("您的余额不足,购买失败\n购物车里有%s\n超出了%d元" % (count_g,g_pay-m))  
+            break
+        else :    
+            print("购买成功,您购买了",count_g)
+    else:
+        print("输入无效,请从新输入")
+        continue
+
 
 
 
