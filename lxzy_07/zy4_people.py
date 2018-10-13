@@ -39,27 +39,27 @@ print(p_book)
 
 
 
-# 求最长的名字的长度
-max_height_name = 4
-max_height_age = 4
-max_height_score = 4
+# 求最长
+max_wn = 4
+max_wa = 4
+max_ws = 4
 for i in p_book:
-    height = len(i["name"])
-    height2 = len(str(i["age"]))
-    height3 = len(str(i["score"]))
-    if height > max_height_name:
-        max_height_name = height
-    if height2 > max_height_age:
-        max_height_age = height2
-    if height3 > max_height_score:
-        max_height_score = height3
-# print(max_height_name) 
-hz_len = max_height_name
+    h = len(i["name"])
+    h2 = len(str(i["age"]))
+    h3 = len(str(i["score"]))
+    if h > max_wn:
+        max_wn = h
+    if h2 > max_wa:
+        max_wa = h2
+    if h3 > max_ws:
+        max_ws = h3
+# print(max_wn) 
 
 
-print("+" + "-" * (max_height_name+4)  + "+" +"-" * (max_height_age+4)+ "+" + "-"*(max_height_score+4) + "+")
-print("|"+"姓名".center(max_height_name+2)+"|"+"年龄".center(max_height_age+2)+"|"+"成绩".center(max_height_score+2)+"|")
-print("+" + "-" * (max_height_name+4)  + "+" +"-" * (max_height_age+4)+ "+" + "-"*(max_height_score+4) + "+")
+
+print("+" + "-" * (max_wn+4)  + "+" +"-" * (max_wa+4)+ "+" + "-"*(max_ws+4) + "+")
+print("|"+"姓名".center(max_wn+2)+"|"+"年龄".center(max_wa+2)+"|"+"成绩".center(max_ws+2)+"|")
+print("+" + "-" * (max_wn+4)  + "+" +"-" * (max_wa+4)+ "+" + "-"*(max_ws+4) + "+")
 
 for i in p_book:
     # 拿出来
@@ -70,23 +70,13 @@ for i in p_book:
     for hz in bname:
         # 判断输入的名字中有没有汉子
         if ord(hz) > 128 :
-            hz_len -= len(bname)
-            print("|" + bname.center(hz_len+4) + "|" + bage.center(max_height_age+4) + "|" + bscore.center(max_height_score+4) + "|")
+            print("|" + bname.center(max_wn-len(bname)+4) + "|" + bage.center(max_wa+4) + "|" + bscore.center(max_ws+4) + "|")
             break
-    
-    
     else:
-        print("|" + bname.center(max_height_name+4) + "|" + bage.center(max_height_age+4) + "|" + bscore.center(max_height_score+4) + "|")
-
-        
-    print("+" + "-" * (max_height_name+4)  + "+" +"-" * (max_height_age+4)+ "+" + "-"*(max_height_score+4) + "+")
+        print("|" + bname.center(max_wn+4) + "|" + bage.center(max_wa+4) + "|" + bscore.center(max_ws+4) + "|")   
+    print("+" + "-" * (max_wn+4)  + "+" +"-" * (max_wa+4)+ "+" + "-"*(max_ws+4) + "+")
     
     
 
 
 
-
-
-
-
-# print("+" + "-" * (max_height_name+4)  + "+" +"-" * 8 + "+" + "-"*8 + "+")
