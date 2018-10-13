@@ -72,8 +72,8 @@ goods = [
     {"name":"美女","price": 98},
         ] 
 # 打印价目表
-print("价目表".center(30))
-print("-"*30)
+print("价目表".center(20))
+print("-"*20)
 # 定义序号
 i = 1
 # 创建列表让序号和键值关联
