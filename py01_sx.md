@@ -1,9 +1,5 @@
 # python
-## subl 编辑器快捷键
-- 注释：　CTRL+?
-- 返回：　CTRL+z
-- 保存： CTRL+s
-- 同时选中多个光标：CTRL+鼠标左键
+
 ## 程序运行：
 - 终端下输入python3 filename
 - 进入：python3
