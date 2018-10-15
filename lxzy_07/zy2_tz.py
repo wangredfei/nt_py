@@ -4,6 +4,6 @@
 #     到第十天,发现只剩下一个了,  
 #     问: 第一天摘了多少个桃子
 peach = 1
-for i in range(1,11):
+for i in range(1,10):
     peach= (peach + 1)*2
 print("一共有%d个桃子" % peach)
