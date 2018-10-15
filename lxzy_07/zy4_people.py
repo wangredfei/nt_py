@@ -67,13 +67,14 @@ for i in p_book:
     bage = str(i['age'])
     bscore = str(i['score'])
     # 判断输入的是否为汉子
+    len_hz = 0
     for hz in bname:
         # 判断输入的名字中有没有汉子
         if ord(hz) > 128 :
-            print("|" + bname.center(max_wn-len(bname)+4) + "|" + bage.center(max_wa+4) + "|" + bscore.center(max_ws+4) + "|")
-            break
-    else:
-        print("|" + bname.center(max_wn+4) + "|" + bage.center(max_wa+4) + "|" + bscore.center(max_ws+4) + "|")   
+            len_hz += 1
+            continue
+    
+    print("|" + bname.center(max_wn-len_hz+4) + "|" + bage.center(max_wa+4) + "|" + bscore.center(max_ws+4) + "|")   
     print("+" + "-" * (max_wn+4)  + "+" +"-" * (max_wa+4)+ "+" + "-"*(max_ws+4) + "+")
     
     
