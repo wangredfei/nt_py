@@ -25,7 +25,7 @@ def input_student():
         p_book.append( dict(name = iname, age = iage, score = iscore))
     return p_book
 
-def out_student(l):
+def output_studentn(l):
 
 
 
@@ -69,4 +69,4 @@ def out_student(l):
         
     
 l = input_student()
-out_student(l)
+output_studentn(l)
