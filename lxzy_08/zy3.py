@@ -6,12 +6,11 @@
 #     print(Sn(3))  # 0.75
 #     print(Sn(1000))  # ???
 def Sn(number):
-    # 生成列表
-    l = list(range(1,number+1))
+
     # 创建一个值用于存储总和
     sum_number = 0
-    for i in l :
-        sum_number += 1/(l[i-1]*(l[i-1]+1))
+    for i in range(1,number+1):
+        sum_number += 1/(i*(i+1))
     return sum_number
 print(Sn(3))
 print(Sn(1000))
