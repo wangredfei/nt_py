@@ -16,6 +16,10 @@ Out[3]: '18,kzc,18'
 ```py
 In [5]: '{name},{age}'.format(age=18,name='kzc')
 Out[5]: 'kzc,18'
+
+In [9]: data = {'first': 'Hodor', 'last': 'Hodor!'}
+In [10]: '{first} {last}'.format(**data)
+Out[9]:'Hodor Hodor!'
 ```
 
 - 通过下标
@@ -24,9 +28,7 @@ Out[5]: 'kzc,18'
 In [7]: p=["haha",'kzc',18]
 In [8]: '{0[1]},{0[2]}'.format(p)
 Out[8]: 'kzc,18'
-In [9]: data = {'first': 'Hodor', 'last': 'Hodor!'}
-In [10]: '{first} {last}'.format(**data)
-Out[9]:'Hodor Hodor!'
+
 ```
 
 ## 格式限定符
@@ -75,7 +77,7 @@ Out[56]: '21'
 In [57]: '{:x}'.format(17)
 Out[57]: '11'
 ```
-##用，号还能用来做金额的千位分隔符。
+## 用，号还能用来做金额的千位分隔符。
 
 ```py	
 In [47]: '{:,}'.format(1234567890)
