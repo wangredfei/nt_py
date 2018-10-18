@@ -28,7 +28,6 @@ def input_student(l):
         l.append( dict(name = iname, age = iage, score = iscore))
     return l
 
-
 # 给一个列表,使列表打印出来
 def output_student(l):
 
@@ -72,8 +71,8 @@ def output_student(l):
         print("|" + bname.center(max_wn-len_hz+4) + "|" + bage.center(max_wa+4) + "|" + bscore.center(max_ws+4) + "|")   
         print("+" + "-" * (max_wn+4)  + "+" +"-" * (max_wa+4)+ "+" + "-"*(max_ws+4) + "+")
         
-
-def peo_itface():
+# 打印菜单
+def show_menu():
     print("+----------------------+")
     print("| 1) 添加学生信息      |")
     print("| 2) 查看学生信息      |")
@@ -81,24 +80,41 @@ def peo_itface():
     print("| 4) 修改学生成绩      |")
     print("| q) 退出              |")
     print("+----------------------+")
-    # 定义一个函数用于删除列表中的字典
-    def rm_people(l):
-        rm_name = input("请输入您想删除谁的信息(说如名字): ")
-        for people in l:
-            if rm_name == people["name"]:
-                l.remove(people)
-    # 定义一个函数用于修改学生成绩
-    def mod_score(l):
-        mod_name = input("您想修改谁的成绩: ")
-        mod_name_score = int(input("您想修改{}的成绩为多少:".format(mod_name)))
-        for people in l:
-            # 判断想修改谁的
-            if people["name"] == mod_name:
-                # 开始修改
-                people["score"] = mod_name_score
 
+# 定义一个函数用于删除列表中的字典
+def rm_people(l):
 
+    if l == []:
+        print('没有学生信息,请按1输入')
+        return
+    rm_name = input("请输入您想删除谁的信息(如名字): ")
+    for people in l:
+        if rm_name == people["name"]:
+            l.remove(people)
+            print("删除成功")
+    else: 
+        print("删除失败,没有您要删除的学生")
+
+# 定义一个函数用于修改学生成绩
+def mod_score(l):
+    mod_name = input("您想修改谁的成绩: ")
+   
+    mod_name_score = int(input("您想修改{}的成绩为多少:".format(mod_name)))
+    for people in l:
+        # 判断想修改谁的
+        if people["name"] == mod_name:
+            # 开始修改
+            people["score"] = mod_name_score
+            print("修改成功")
+    else:
+        print("修改失败,没有您输入的学生")
+
+def main():
+        
+    peoples = []
     while 1 :
+        # 调用菜单函数  
+        show_menu()
         nub = input("请输入您想使用的功能对应的序号: ")
         # 添加
         if nub == "1":
@@ -111,18 +127,19 @@ def peo_itface():
         # 删除
         elif nub == "3":
             rm_people(peoples)
-            print("删除成功")
+            
         # 修改成绩
         elif nub == "4":
             mod_score(peoples)
-            print("修改成功")
+            
             output_student(peoples)
         # 退出
         elif nub == "q":
             break
         else:
             print("请输入正确的选项")
-            continue
+            
+        print("-"*50)
 # 定义一个空的列表用于存储用户数据
-peoples = []
-peo_itface()
+
+main()
