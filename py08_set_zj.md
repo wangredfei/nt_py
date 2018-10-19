@@ -166,7 +166,7 @@ int     | dict
 float   | set
 complex |bytearray
 str     |
-tuple   |font
+tuple   |
 frozenset|
 bytes(字节串)|
 
