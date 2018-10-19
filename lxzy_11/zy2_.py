@@ -13,29 +13,29 @@
 
 
 # 1)
+'''
 def print_list(l):
     for i in l:
         if type(i) is int:
             print(i)
         elif type(i) is list:
             print_list(i)
-
+'''
 # 定义一个变量用于求和
-s = 0
 def sum_list(l):
-    global s
+    s = 0
     for i in l:
         if type(i) is int:
             # print(i)
             s += i
         elif type(i) is list:
-            sum_list(i)
+            s += sum_list(i)
     return s
 
 
 # 1)
 L = [[3, 5, 8], 10, [[13, 14], 15, 18], 20]
-print_list(L)
+# print_list(L)
 # 2)
 print(sum_list(L))
 

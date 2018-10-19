@@ -1,0 +1,10 @@
+import time
+y = int(input("请输入您出生在哪年"))
+m = int(input("请输入您出生在哪月"))
+s = int(input("请输入您出生在哪日"))
+tup = (y,m,s,0,0,0,0,0,0)
+t = time.time() - time.mktime(tup)
+tt = time.localtime(t)
+day = int(t/(24*3600))
+print("你活了{}天".format(day))
+print(day%7+1)
