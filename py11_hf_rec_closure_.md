@@ -30,7 +30,7 @@ sorted(iterable,key=None,reverse=False) |	返回一个新的包含有所有可�
 
 ## sorted
 - key : 函数是用来提供一个值,这个值讲作用排序的依据 例如:key = abs()
-- 返回的是一个列表!
+- 返回的是一个新的列表,需要用一个新的变量或者原来的列表接受!
 
 # 递归函数 recursion
 - 函数直接或间接的调用自身
