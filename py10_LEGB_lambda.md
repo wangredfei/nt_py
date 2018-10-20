@@ -95,7 +95,7 @@ print("quanjv", c)
 ## eval(source,global=None, local = None) 
 - 把一个字符串source 当成一个表达式来执行,返回表达式执行结果
 ## exec(source , global = None , local = None)
-- 把一个字符串source 当成一个程序来执行
+- 把一个字符串source 当成一个程序来执行 返回None
 
 ```py
 s= "1 + 2 * 3 + 4"
