@@ -29,7 +29,7 @@
     `t = tuple()`  
     `t = tuple(range())`  
     `t = tuple("ABCD")`  
-    `t = tuple([ABCD])`  
+    `t = tuple(['ABCD'])`  
 ## 元组的运算符 
 ` + += * *=`
 - **id改变**
@@ -138,7 +138,7 @@
 - 示例:
 ```python
 # - for 语句对字典进行访问的话,只返回键值  
-d = {0:'零',1:'壹',2,'贰'}
+d = {0:'零',1:'壹',2:'贰'}
 for i in d:
     print(i) 
 # out: 0,1,2
