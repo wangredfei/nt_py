@@ -6,6 +6,6 @@ def A():
     def B():
         print("B 被调用")
     print("A调用结束")
-    # return B
+    return B
 fn = A()
 fn()
