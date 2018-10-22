@@ -16,6 +16,7 @@ print(mysumw(1000000))
 print(mysumw(1000000)*4)
 
 '''
+递归
 def mysum(n):
     # import sys
     # sys.setrecursionlimit(1000000)

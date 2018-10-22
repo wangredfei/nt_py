@@ -5,12 +5,11 @@
 def clock():
     import time
     while 1:
-        now_t = time.localtime(time.time())
-
+        now_t = time.localtime()
         h = now_t[3]
         m = now_t[4]
         s = now_t[5]
-        print("{:0>2}:{:0>2}:{:0>2}".format(h,m,s))
+        print("{:0>2}:{:0>2}:{:0>2}".format(h,m,s),end = "\r")
         time.sleep(1)
     
 clock()
