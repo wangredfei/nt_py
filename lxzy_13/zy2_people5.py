@@ -3,11 +3,10 @@
 #      1. 主事件循环while语句放在main.py中
 #      2. show_menu函数放在menu.py中
 #      3. 与学生操作相关的函数放在student_info.py中
-import zy2_show_menu as sm
-import zy2_student_info as si
 # 定义主函数
-def main():
-        
+def main(): 
+    import zy2_show_menu as sm
+    import zy2_student_info as si
     peoples = []
     while 1 :
         # 调用菜单函数  

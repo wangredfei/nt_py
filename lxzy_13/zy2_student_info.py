@@ -68,6 +68,7 @@ def rm_people(l):
         if rm_name == people["name"]:
             l.remove(people)
             print("删除成功")
+            break
     else: 
         print("删除失败,没有您要删除的学生")
 
