@@ -2,8 +2,8 @@
 #     在任何情况下都能按逻辑正常执行.
 #       如输入成绩,年龄等都不会导致程序崩溃
 def main(): 
-    import zy2_show_menu as sm
-    import zy2_student_info as si
+    import zy3_show_menu as sm
+    import zy3_student_info as si
     peoples = []
     while 1 :
         try:
