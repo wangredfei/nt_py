@@ -3,10 +3,11 @@
 #       1) 算出皮球在第10次落后反弹多高
 #       2) 算出皮球在第10次反弹后经过多少米路程
 
-height = 100 
-km = 100
-for i in range(10):
-    height /= 2
-    km += height*2
-print(height)
-print(km)
+
+def get_height(height,times):
+    km = height
+    for i in range(times):
+        height /= 2
+        km += height*2
+    return height,km
+print('返回的高度是%f,经过了%d米'% get_height(100,10))

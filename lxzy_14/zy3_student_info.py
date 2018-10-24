@@ -5,9 +5,13 @@ def input_student(l):
         # 如果输入为空则停止输入
         if iname == "":
             break
-        iage = int(input("Please input your age : "))
-        iscore = int(input("Please input your score : "))
+        try:
+            iage = int(input("Please input your age : "))
+            iscore = int(input("Please input your score : "))
         # 将字典存入列表
+        except:
+            print("输入有误,请从新输入")
+            continue
         l.append( dict(name = iname, age = iage, score = iscore))
     return l
 
