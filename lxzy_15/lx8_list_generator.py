@@ -12,3 +12,14 @@ it = iter(a)
 print(next(it))# 20
 l[1] = 333  
 print(next(it))# 3330
+
+
+l = [1,2,3,4,5,6,7]
+c = (x*5 for x in l)
+for i in c:
+    print(i)
+print("-"*5)
+# 下面遍历不会被打印,因为生成器只能生成一次
+l[3] = 44
+for i in c:
+    print(i)
