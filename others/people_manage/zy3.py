@@ -1,6 +1,8 @@
 # 3. 修改原学生信息管理程序,加入异常处理语句,让程序
 #     在任何情况下都能按逻辑正常执行.
 #       如输入成绩,年龄等都不会导致程序崩溃
+# 4. 将学生信息管理程序,把用于存储学生信息的字典,换成
+#     用Student类型对象来存储学生信息
 def main(): 
     import zy3_show_menu as sm
     import zy3_student_info as si
