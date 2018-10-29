@@ -107,3 +107,11 @@ f.write("nihao")
 f.flush()
 input()
 '''
+
+# class Dog():
+#     pass
+# dog1 = Dog()
+# dog1.color = "bai"
+# dog1.__dict__['kdis'] = 'jingba'
+# print(dog1.__dict__)
+
