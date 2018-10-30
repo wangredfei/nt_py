@@ -1,0 +1,5 @@
+s = input("请输入文字信息:")
+s1 = repr(s)
+s2 = str(s)
+print(s1)
+print(s2)
