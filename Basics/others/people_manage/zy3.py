@@ -38,8 +38,8 @@ def main():
             si.age_low_high(peoples)
         # 从文件中读取数据(si.txt)   
         elif nub == "9":
-            filename = input("Please input local filename:")
-            peoples = si.file_to_l(filename)
+            
+            peoples = si.file_to_l("/home/tarena/nt_py/Basics/others/people_manage/si.txt")
         # 保存信息到文件(si.txt) 
         elif nub == "10":
             si.save_to_file(peoples)

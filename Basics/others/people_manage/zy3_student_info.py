@@ -1,11 +1,26 @@
 # 定义学生类
 class Student():
     def __init__(self,name,age,score):
-        self.name = name 
-        self.age = age 
-        self.score =score  
+        self.__name = name 
+        self.__age = age 
+        self.__score =score  
+
     def show_info(self):
-        print("name:{},age:{},score:{}".format(self.name , self.age , self.score))
+        print("name:{},age:{},score:{}".format(self.__name , self.__age , self.__score))
+
+    def get_name(self):
+        return self.__name
+
+    def get_age(self):
+        return self.__age
+
+    def get_score(self):
+        return self.__score
+
+    def set_score(self, v):
+        assert 0 <= v <= 100, '成绩失败!'
+        self.__score = v
+
 
 # 给一个列表,使列表打印出来
 def input_student(l):
@@ -36,10 +51,10 @@ def output_student(l):
     max_wa = 4
     max_ws = 4
     for i in l:
-        h = len(i.name)
+        h = len(i.get_name())
 
-        h2 = len(str(i.age))
-        h3 = len(str(i.score))
+        h2 = len(str(i.get_age()))
+        h3 = len(str(i.get_score()))
         
         if h > max_wn:
             max_wn = h
@@ -57,9 +72,9 @@ def output_student(l):
 
     for i in l:
         # 拿出来
-        bname = i.name
-        bage = str(i.age)
-        bscore = str(i.score)
+        bname = i.get_name()
+        bage = str(i.get_age())
+        bscore = str(i.get_score())
         # 判断输入的是否为汉子
         len_hz = 0
         for hz in bname:
@@ -80,7 +95,7 @@ def rm_people(l):
         return
     rm_name = input("请输入您想删除谁的信息(如名字): ")
     for people in l:
-        if rm_name == people.name:
+        if rm_name == people.get_name():
             l.remove(people)
             print("删除成功")
             break
@@ -91,13 +106,15 @@ def rm_people(l):
 # 定义一个函数用于修改学生成绩
 def mod_score(l):
     mod_name = input("您想修改谁的成绩: ")
-   
+    if mod_name not in [x.get_name() for x in l]:
+        print("没有这名同学")
+        return
     mod_name_score = int(input("您想修改{}的成绩为多少:".format(mod_name)))
     for people in l:
         # 判断想修改谁的
-        if people.name == mod_name:
+        if people.get_name() == mod_name:
             # 开始修改
-            people.score = mod_name_score
+            people.set_score(mod_name_score)
             print("修改成功")
     else:
         print("修改失败,没有您输入的学生")
@@ -106,7 +123,7 @@ def mod_score(l):
 # 用sorted 函数写
 def score_high_low(l):
     def high(d):
-        return d.score
+        return d.get_score()
     l = sorted(l , key = high , reverse = True)  
     # l.sort(key = high , reverse = True)
     print("排序成功")
@@ -115,21 +132,21 @@ def score_high_low(l):
 # 定义一个函数用于成绩从低到高排序
 def score_low_high(l):
     def low(d):
-        return d.score
+        return d.get_score()
     l.sort(key=low)
     print("排序成功")
     
 # 定义一个函数用于年龄从高到低排序
 def age_high_low(l):
     def high(d):    
-        return d.age
+        return d.get_age()
     l.sort(key = high , reverse = True)
     print("排序成功")   
     
 # 定义一个函数用于年龄从低到高排序
 def age_low_high(l):
     def low(d):
-        return d.age
+        return d.get_age()
     l.sort(key=low)
     print("排序成功")
 
