@@ -115,3 +115,6 @@ input()
 # dog1.__dict__['kdis'] = 'jingba'
 # print(dog1.__dict__)
 
+
+n = int(input("请输入"))
+raise StopIteration
