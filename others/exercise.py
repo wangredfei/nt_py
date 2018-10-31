@@ -116,5 +116,23 @@ input()
 # print(dog1.__dict__)
 
 
-n = int(input("请输入"))
-raise StopIteration
+# n = int(input("请输入"))
+# raise StopIteration
+
+'''
+class MyList:
+    def __init__(self,iterable):
+        self.date = [x for x in iterable]
+    def __repr__(self):
+        return "Mylist(%s)"%self.date
+    def __neg__(self):
+        a = [-x for x in self.date]
+        return MyList(a)
+class A(MyList,object):
+    pass
+l = [1,-2,3,-4]
+ll = MyList(l)
+l2 = -ll
+print(l2)
+print(A.__bases__)
+'''
