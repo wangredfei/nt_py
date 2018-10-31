@@ -6,18 +6,15 @@
 #        3. 要考虑关闭文件
 def mycopy(old_file,newfile = 'newfile.txt'):
     try:
-        of = open(old_file,'rb')
-        nf = open(newfile,'wb')
-        while 1 :
-            of_code = of.read(100)
-            nf.write(of_code)
-            if of_code==b"":
-                break
+        with open(old_file,'rb') as  of,open(newfile,'wb') as nf:
+            while 1 :
+                of_code = of.read(100)
+                nf.write(of_code)
+                if of_code==b"":
+                    break
     except OSError:
         print("open file Error")
-    finally:
-        of.close()
-        nf.close()
+    
 mycopy("a.jpg","hahaha.jpg")
 mycopy("lx1_info.txt","commentcopy.txt")
     
