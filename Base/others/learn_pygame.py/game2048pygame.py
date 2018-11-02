@@ -56,7 +56,7 @@ class UpdateNew(object):
 			except:
 				pass
 			if rowlist == mid:
-				break;
+				break
 		return self.combineList(rowlist)
 
 	def toSequence(self,matrix):
