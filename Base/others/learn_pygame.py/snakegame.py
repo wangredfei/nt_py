@@ -29,13 +29,12 @@ def main():
     snakebod = [[100,100],[80,100],[60,100]]
     # 初始化目标方块的位置
     targetpos = [300,300]
-    # 判断是否吃掉这个方块 1 没被吃掉，0 被吃掉
-    targetflag = 1
+    
     #初始化方向－－》　往右
     direction = "right"
     #定义一个方向变量
     changeDirecftion = direction
-
+   
     #　
     while 1:
         for event in pygame.event.get():
@@ -69,29 +68,31 @@ def main():
             snakepos[1] -= 20
         elif direction == "down":
             snakepos[1] += 20
+        if snakepos in snakebod:
+            gameover()
         
         snakebod.insert(0, list(snakepos))
-
-        # 判断是否与实物重合            
+        foodpos = [[x*20,y*20] for x in range(1,32) for y in range(1,24) if [x,y] not in snakebod]
+        print(foodpos)
+                 
         if snakepos == targetpos:
-            targetflag = 0
-            targetpos = [random.randrange(1,32)*20, random.randrange(1,24)*20]
-            targetflag = 1
+            targetpos = random.choice(foodpos)
         else:
             snakebod.pop()
         
         playsuiface.fill(black)
-
+        # 画图
         for position in snakebod:
             pygame.draw.rect(playsuiface,white,Rect(position[0],position[1],20,20))
             pygame.draw.rect(playsuiface,red,Rect(targetpos[0],targetpos[1],20,20))
-
+        
         pygame.display.flip()
-
-        if snakepos[0]>620 or snakepos[0]<0:
+        # 判断出界
+        if snakepos[0]>620 or snakepos[0]<0 :
             gameover()
         elif snakepos[1]>460 or snakepos[1] < 0:
             gameover()
+        
         fpsClock.tick(5)
 
 if __name__=="__main__":
