@@ -5,17 +5,31 @@ from pygame.locals import *
 
 
 class BasePlane():
-    def __init__(self, screen_temp, x, y, image_name):
+    '''飞机的基类'''
+    def __init__(self, screen_temp, x, y, image_name,image_list):
         self.x = x
         self.y = y
         self.screen = screen_temp
         self.image_name = image_name
+        self.list = image_list
         self.image = pygame.image.load(os.path.join(r"D:\nt_py\plane game\feiji",self.image_name))
         # 定义一个列表用于存储子弹
         self.bullet_list = []
-    
+        self.hit = False
+        self.image_num = 0
+        self.image_index = 0
     def display(self ):
-        self.screen.blit(self.image, (self.x, self.y))
+        if self.hit == True:
+            self.screen.blit(self.list[self.image_index],(self.x, self.y))
+            self.image_num += 1
+            if self.image_num == 7:
+                self.image_num = 0
+                self.image_index += 1
+            if self.image_index > 3:
+                time.sleep(1)
+                sys.exit()
+        else:
+            self.screen.blit(self.image, (self.x, self.y))
         # 判断字段越界的问题
         b = []
         for bullet in self.bullet_list:
@@ -25,13 +39,19 @@ class BasePlane():
                 b.append(bullet)
         for i in b:
             self.bullet_list.remove(i)
-
-    
+    def plane_over(self):
+        self.hit = True
 
 class HeroPlane(BasePlane):
     '''这是一个自己飞机的类'''
     def __init__(self, screen_temp):
-        BasePlane.__init__(self, screen_temp, 190, 700,"hero1.png" )
+        image_list_hero = [
+                            pygame.image.load(os.path.join(r"D:\nt_py\plane game\feiji","hero_blowup_n1.png")),
+                            pygame.image.load(os.path.join(r"D:\nt_py\plane game\feiji","hero_blowup_n2.png")),
+                            pygame.image.load(os.path.join(r"D:\nt_py\plane game\feiji","hero_blowup_n3.png")),
+                            pygame.image.load(os.path.join(r"D:\nt_py\plane game\feiji","hero_blowup_n4.png")),
+                            ]
+        BasePlane.__init__(self, screen_temp, 190, 700,"hero1.png" ,image_list_hero)
         
  
     def move_left(self):
@@ -53,8 +73,15 @@ class HeroPlane(BasePlane):
 class Enemy1(BasePlane):
     '''这是敌机的类'''
     def __init__(self, screen_temp):
-        x = random.randrange(1,480,30)
-        BasePlane.__init__(self, screen_temp,x , 0,"enemy-1.gif" )
+        self.x = random.randrange(1,480,30)
+        self.y = 0
+        image_list_enemy = [
+                            pygame.image.load(os.path.join(r"D:\nt_py\plane game\feiji","enemy0_down1.png")),
+                            pygame.image.load(os.path.join(r"D:\nt_py\plane game\feiji","enemy0_down2.png")),
+                            pygame.image.load(os.path.join(r"D:\nt_py\plane game\feiji","enemy0_down3.png")),
+                            pygame.image.load(os.path.join(r"D:\nt_py\plane game\feiji","enemy0_down4.png")),
+        ]
+        BasePlane.__init__(self, screen_temp,self.x , self.y,"enemy-1.gif",image_list_enemy )
         self.direction = "right"
 
 
@@ -77,7 +104,7 @@ class Enemy1(BasePlane):
         if  random_num == 8 or random_num == 20:
 
             self.bullet_list.append(Bullet2(self.screen,self.x, self.y))
-
+    
 
 class Base_Bullet():
     def __init__(self, screen_temp, x, y, image_name):
@@ -106,7 +133,7 @@ class Bullet2(Base_Bullet):
     def move(self):
         self.y += 3
 
-
+        
 def key_control(plane_temp):
     for event in pygame.event.get():
         if event.type == QUIT:
@@ -115,22 +142,20 @@ def key_control(plane_temp):
         elif event.type == KEYDOWN:
             if event.key == K_a or event.key == K_LEFT:
                 plane_temp.move_left()
-                print("left")
 
             elif event.key == K_d or event.key == K_RIGHT:
                 plane_temp.move_right()
-                print("right")
 
             elif event.key == K_w or event.key == K_UP:
                 plane_temp.move_up()
-                print("up")
 
             elif event.key == K_s or event.key == K_DOWN:
                 plane_temp.move_down()
-                print("down")
+
+            elif event.key == K_b :
+                plane_temp.hit = True
 
             elif event.key == K_SPACE:
-                print("space")
                 plane_temp.fire()
 
 
@@ -146,8 +171,16 @@ def main():
         key_control(plane)
         # 放背景
         screen.blit(background,(0,0)) 
+        for bullet in  plane.bullet_list:
+            # 判断是否击中
+            if enemy1.x <= bullet.x <= enemy1.x+50 and enemy1.y <= bullet.y <= enemy1.y+40:
+                enemy1.plane_over() 
+        for bullet in  enemy1.bullet_list:
+            # 判断是否被击中
+            if plane.x <= bullet.x <= plane.x+100 and plane.y <= bullet.y <= plane.y+100:
+                plane.plane_over() 
         # 打印飞机
-        plane.display()
+        plane.display() 
         # # 打印敌机
         enemy1.display()
         enemy1.move()
