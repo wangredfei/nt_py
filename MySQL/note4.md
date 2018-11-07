@@ -50,9 +50,9 @@
             - update : 加写锁后别人不能查也不能改
 
     2. 锁粒度
-        1. 表级索: 一人进来锁整个表 = 加读锁 写锁
+        1. 表级索: 一人进来锁整个表 = 加读锁 写锁 MyISAM
 
-        2. 行级锁: 加读锁 写锁
+        2. 行级锁: 加读锁 写锁 innodb
 
 # 存储引擎(处理表的处理器)
 - 基本操作
@@ -114,7 +114,7 @@
       lines terminated by "\n" 
     ```
 - 把scoreTable.csv文件导入到数据库表中
-    - 在数据库创建对应的表
+    1. 在数据库创建对应的表
         ```
         create table scoretab(
         id int, name varchar(20),
@@ -124,7 +124,7 @@
         charset = utf8;
         ```
 
-    - 把文件拷贝到数据库的搜索路径中
+    2. 把文件拷贝到数据库的搜索路径中
         ```
         1. 查看搜索路径
         show variables like "score_file_priv";
@@ -132,7 +132,7 @@
         sudo cp scoreTable.csv /var/lib/mysql-files/
         ```
 
-    - 执行数据导入语句
+    3. 执行数据导入语句
         ```
         load data infile "/var/lib/mysql-files/scoreTable.csv" 
         into table scoretab
