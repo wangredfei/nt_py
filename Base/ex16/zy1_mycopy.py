@@ -6,7 +6,7 @@
 #        3. 要考虑关闭文件
 def mycopy(old_file,newfile = 'newfile.txt'):
     try:
-        with open(old_file,'rb') as  of,open(newfile,'wb') as nf:
+        with open(old_file,'rb') as of,open(newfile,'wb') as nf:
             while 1 :
                 of_code = of.read(100)
                 nf.write(of_code)

@@ -166,7 +166,7 @@
     2. 授权
         - `mysql > grant 权限列表 on 库名.表名 to "用户名"@"%" identified by "密码" with grant option;`
         - 权限列表
-            - `all privileges, select update 
+            - `all privileges`, `select update `
         - 库.表
             - *.*  库名.*
     3. 示例

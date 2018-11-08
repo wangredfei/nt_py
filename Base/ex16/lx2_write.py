@@ -6,6 +6,6 @@ try :
     f.writelines("nishishabime")
     f.writelines("hahahaha")
 
-    f.close
+    f.close()
 except OSError:
     print("打开文件失败")
