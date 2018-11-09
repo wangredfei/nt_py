@@ -7,29 +7,32 @@ sockfd = socket.socket(
     proto=0
 )
 # 绑定地址
-sockfd.bind(('0.0.0.0',6666))
+sockfd.bind(('0.0.0.0',8866))
+
+# 设定监听
+sockfd.listen(5)
+
+
 while 1 :
-
-    # 设定监听
-    sockfd.listen(5)
-
     print("Waiting for connect .. .")
-
     # 处理客户端连接
-    connfd,addr = sockfd.accept()
-
-    print("-------",addr)
-
-    # 收发消息
-    data = connfd.recv(1024)
-    print(data)
-    if data == b'q':
+    try:
+        connfd,addr = sockfd.accept()
+        print("-------",addr)
+    except KeyboardInterrupt:
         break
-    n = connfd.send("Hello world!".encode())
+    while True:
+        # 收发消息
+        data = connfd.recv(1024)
+        # 如果通道关闭,直接返回空字符串
+        if not data :
+            break
+        print(data)
+        n = connfd.send("Hello world!".encode())
 
-    print("Send %d bytes"%n)
-    
+        print("Send %d bytes"%n)
+    connfd.close()
+        
     
 
-connfd.close()
 sockfd.close()
