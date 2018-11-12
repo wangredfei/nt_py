@@ -1,24 +1,40 @@
-import socket
+# import socket
 
-sockfd = socket.socket(
-    socket.AF_INET,
-    socket.SOCK_STREAM,
-    proto=0
-)
+# sockfd = socket.socket(
+#     socket.AF_INET,
+#     socket.SOCK_STREAM,
+#     proto=0
+# )
 
-# 绑定服务器
-sockfd.bind(("0.0.0.0",9999))
+# # 绑定服务器
+# sockfd.bind(("0.0.0.0",9999))
 
-while 1: 
-    sockfd.listen(2)
-    print("wait to connect....")
+# while 1: 
+#     sockfd.listen(2)
+#     print("wait to connect....")
+#     connfd, addr = sockfd.accept()
+#     data = connfd.recv(1024)
+#     print(data)
+#     if data == b"q":
+#         break
+#     n = connfd.send("nihao".encode())
+#     print("zijieshu = ", n)
+
+# connfd.close()
+# sockfd.close()
+
+from socket import *
+sockfd = socket()
+sockfd.bind(("0.0.0.0",3544))
+f = open("bbb.html","rb")
+
+sockfd.listen(5)
+print("wait....")
+while 1:
     connfd, addr = sockfd.accept()
-    data = connfd.recv(1024)
-    print(data)
-    if data == b"q":
-        break
-    n = connfd.send("nihao".encode())
-    print("zijieshu = ", n)
-
+    a = connfd.recv(4098)
+    data = f.read()
+    connfd.send(data)
 connfd.close()
+f.close()
 sockfd.close()

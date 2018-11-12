@@ -136,3 +136,85 @@ l2 = -ll
 print(l2)
 print(A.__bases__)
 '''
+'''
+def foo():
+    a = 0
+    def bar():
+        a += 10
+        return a
+    return bar
+b = foo()
+print(b())
+
+
+
+'''
+
+
+
+
+
+
+
+
+
+
+'''
+
+
+def foo():
+    a = []
+    def bar():
+        a.append(100)
+        return a
+    return bar
+
+if __name__ == "__main__":
+    b = foo()
+    c = foo()
+
+    print (b())
+    print (b())
+    print (c())
+'''
+# import copy
+# l = [1,2,3]
+# l1 = [l,4,5,6]
+# l2 = l1.copy()
+# print(l1)
+# print(l2)
+# l[1] = 22
+# print(l1)python深copy和浅copy
+# print(l2)
+# l1[1] = 44
+# print(l1)
+# print(l2)
+# l3 = copy.deepcopy(l1)
+# print(l3)
+import copy
+l = [1,2,3]
+l1 = [l, 4, 5, 6]
+l2 = l1 
+l3 = l1.copy()
+l4 = copy.deepcopy(l1)
+# print(l1)
+# print(id(l1))
+# print(l2)
+# print(id(l2))
+# print(l3)
+# print(id(l3))
+# print(l4)
+# print(id(l4))
+# -----
+# l1.append(8)
+# print(l1)
+# print(l2)
+# print(l3)
+# print(l4)
+# ------
+l [2] = 33
+print(l1)
+print(l2)
+print(l3)
+print(l4)
+# l4 始终都没有改变

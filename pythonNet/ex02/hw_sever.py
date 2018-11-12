@@ -22,3 +22,22 @@ while 1 :
     c.close()
 s.close()
 f.close()
+
+
+'''???
+from socket import *
+sockfd = socket()
+sockfd.bind(("0.0.0.0",3544))
+f = open("bbb.html","rb")
+
+sockfd.listen(5)
+print("wait....")
+while 1:
+    connfd, addr = sockfd.accept()
+    a = connfd.recv(4098)
+    data = f.read()
+    connfd.send(data)
+connfd.close()
+f.close()
+sockfd.close()
+'''
