@@ -23,18 +23,21 @@
 # connfd.close()
 # sockfd.close()
 
-from socket import *
-sockfd = socket()
-sockfd.bind(("0.0.0.0",3544))
-f = open("bbb.html","rb")
+# from socket import *
+# sockfd = socket()
+# sockfd.bind(("0.0.0.0",3544))
+# f = open("bbb.html","rb")
 
-sockfd.listen(5)
-print("wait....")
-while 1:
-    connfd, addr = sockfd.accept()
-    a = connfd.recv(4098)
-    data = f.read()
-    connfd.send(data)
-connfd.close()
-f.close()
-sockfd.close()
+# sockfd.listen(5)
+# print("wait....")
+# while 1:
+#     connfd, addr = sockfd.accept()
+#     a = connfd.recv(4098)
+#     data = f.read()
+#     connfd.send(data)
+# connfd.close()
+# f.close()
+# sockfd.close()
+l = [[1,2],[3,4],[5,6]]
+print([z for y in l for z in y])
+

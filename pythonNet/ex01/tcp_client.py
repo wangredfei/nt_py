@@ -3,7 +3,7 @@ from socket import *
 
 # 发起链接
 sockfd = socket()
-server_addr = ('127.0.0.1',8866)
+server_addr = ('127.0.0.1',9899)
 sockfd.connect(server_addr)
 # 消息收发
 while 1 :

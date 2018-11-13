@@ -4,7 +4,7 @@ from socket import *
 # 创建套接字
 s = socket()
 s.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
-s.bind(("0.0.0.0",9999))
+s.bind(("0.0.0.0",9899))
 s.listen(5)
 
 
@@ -18,6 +18,9 @@ while 1:
     rs, ws, xs = select(rlist, wlist, xlist)    
 
     # 处理发生的IO事件
+    # ???????????
+    print(1)
+    print(rs)
 
     for r in rs:
         if r is s:
@@ -25,12 +28,15 @@ while 1:
             print("Connect from",addr)
             rlist.append(c)
         else:
-            data = r.recv(1024)
+            data = r.recv(3)
+            # print(rlist)
             if not data :
+                print(2)
                 rlist.remove(r) # 客户端退出,移除关注
                 r.close()
                 continue
             print("收到:",data.decode())
+            # print(rlist)
             # r.send(b"Recive")
             wlist.append(r)
     for w in ws:
