@@ -123,3 +123,64 @@ events = p.poll()
 2. 设置套接字为关注
 3. 建立fileno查找字典
 4. 循环监控IO
+
+# epoll 方法
+## 使用方法: 
+- 基本同poll对象相同
+- 将生成对象函数改为 epoll
+- 将所有关注IO事件类型改为EPOLL
+
+## epoll 特点
+- 是linux的专属多路复用方法
+- 效率相比前两个高
+- epoll可以监控更多的IO (select最多监控1024)
+- epoll 支持更多的触发事件类型(EPOLLET边缘触发)
+
+
+# 结构化数据
+- `import struct`
+- 原理: 将部分数据类型放在一起,转换成bytes格式数据包,并且可以按照指定格式解析bytes数据包
+- ` struct.struct(fmt)`
+- 功能: 生成struct格式包对象
+- 常用fmt int ---  i /bytes ---  ns/float ---  f
+
+##  打包
+- 格式 : `st.pack(v1,v2,v3) `
+- 功能: 要打包的数据
+- 返回值 : 打包后的bytes
+
+## 解包
+- 格式: `st.unpack(bytes)`
+- 功能: 将bytes格式数据包解析
+- 参数: 要解析的数据包
+- 返回值:数据元组
+
+## pack()和unpack()可以通过struct模块直接调用
+- 例子
+
+# 本地套接字
+- 功能: 本地两个程序之间利用套接字进行通信的一种方法
+
+## cookie:
+
+### linux文件类型 
+- b(块设备文件)
+- c(字符设备文件)
+- d(目录)
+- `-`(普通文件)
+- l(连接文件)
+- s(套接字文件)
+- p(管道文件)
+
+## 流程
+1. 创建本地套接字
+    - `sockfd = socket(AF_UNIX,SOCK_STREAM)`
+
+2. 绑定本地套接字文件
+    - `sockfd.bind(path)`
+
+3. 监听
+    - `sockfd.listen()`
+
+4. 连接
+    - `sockfd.accept()`

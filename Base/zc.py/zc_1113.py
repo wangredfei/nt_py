@@ -14,7 +14,7 @@
 # ３．可以用反斜杠来换行,或者用三引号
 # ４．位置传参，关键字传参，命名关键字传参，*args星号元祖传参,**keargs双星号字典传参，引用传递
 # ５．6 7 8
-# ６．lambda x,y : x*y (y=3)
+# ６．lambda x,y=3 : x*y 
 # ７．[x for x in range(1,100) if x % 3 == 0 ]
 # ８．try-except try-finally
 # ９．__init__是初始化 ,当实例化时一定会调用此函数 , __ new__ 是创建并返回一个对象
