@@ -38,6 +38,9 @@
 # connfd.close()
 # f.close()
 # sockfd.close()
-l = [[1,2],[3,4],[5,6]]
-print([z for y in l for z in y])
+# l = [[1,2],[3,4],[5,6]]
+# print([z for y in l for z in y])
 
+from socket import *
+sockfd = socket(AF_INET,SOCK_DGRAM)
+sockfd.bind(('0.0.0.0',8080))

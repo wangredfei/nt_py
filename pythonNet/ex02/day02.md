@@ -165,7 +165,10 @@ s.setsockopt(SOL_SOCKET,SO_BROADCAST,1)
     - TRACE   测试
     - OPTIONS  获取服务器性能信息
 
-        
+- GET和POST的区别
+    - GET是为了从服务器上获取信息\post是向服务器传递数据
+    - GET把参数数据队列添加到URL中\Key和Value的各个字段一一对应,在URL中可以看到
+    - GET传递的数据较小,不能大于2kb(4kb),POST传递的数据量较大,一般认为没有限制
 - 请求头 ： 对请求内容的基本描述
 
     - Accept-Encoding: gzip, deflate, br
