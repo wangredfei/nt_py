@@ -41,6 +41,28 @@
 # l = [[1,2],[3,4],[5,6]]
 # print([z for y in l for z in y])
 
-from socket import *
-sockfd = socket(AF_INET,SOCK_DGRAM)
-sockfd.bind(('0.0.0.0',8080))
+# from socket import *
+# sockfd = socket(AF_INET,SOCK_DGRAM)
+# sockfd.bind(('0.0.0.0',8080))
+
+from multiprocessing import Process,Pipe
+import os,time 
+
+fd1,fd2 = Pipe()
+
+def fun(name):
+    time.sleep(3)
+    fd1.send("hello"+name)
+
+def fun2():
+    data = fd2.recv()
+    print(data)
+
+p = Process(target=fun, args=('hahahaha',))
+pp = Process(target=fun2)
+
+p.start()
+pp.start()
+
+p.join()
+pp.join()
