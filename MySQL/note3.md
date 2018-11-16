@@ -45,7 +45,7 @@
 - 通常与group by 配合使用, having就一定有group by
 - having 语句的存在弥补可where关键字不能与聚合函数联和使用的不足,where 只能操作表中实际存在的字段
 
-## distinct 不系那是字段的重复值
+## distinct 不显示字段的重复值
 
 - select distinct 字段名,字段名2 from 表名 
     - 字段名和字段名2两个字段都相同才会去重
@@ -80,7 +80,7 @@
 
 
 # 连接查询
-- 内连接(和多表查询等价,只显示符合天剑的记录)
+- 内连接(和多表查询等价,只显示符合条件的记录)
     - 语法格式
         - ` select 字段名 from 表1 inner join 表2 on 条件  inner join 表3 on 条件....;`
         - et显示省市县的信息`select sheng.s_name,city.c_name,xian.x_name from sheng inner join city on sheng.s_id = city.cfather_id inner join xian on city.c_id = xian.xfather_id;`

@@ -98,11 +98,11 @@
         - `mysql -uroot -p --one-database 库名 < all.sql`
     - 示例
         1. 在MOSHOU.sheng新增一条记录
-            - 1insert into sheng (s_id,s_name) values("30001","青海省")
+            - `insert into sheng (s_id,s_name) values("30001","青海省")`
     
     - 注意
         - 恢复库时,如果库不存在,则必须先创建空库
-        - 恢复库时,恢复到原库会讲表中数据覆盖,新增表不会删除
+        - 恢复库时,恢复到原库会将表中数据覆盖,新增表不会删除
 
 # 数据导入
 - 作用: 把文件系统的内容导入到数据库表中
