@@ -10,7 +10,7 @@ elif pid == 0 :
     print("Child process %d exit" % os.getpid())
     os._exit(2)
 else :
-    sleep(3)
+    # sleep(3)
     pid,status = os.waitpid(-1,os.WNOHANG) # 非阻塞
     print("pid:",pid)
     print("status:",status)

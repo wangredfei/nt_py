@@ -44,7 +44,7 @@
 # from socket import *
 # sockfd = socket(AF_INET,SOCK_DGRAM)
 # sockfd.bind(('0.0.0.0',8080))
-
+'''
 from multiprocessing import Process,Pipe
 import os,time 
 
@@ -66,3 +66,130 @@ pp.start()
 
 p.join()
 pp.join()
+'''
+
+
+# ISO 网络通信标准化流程 : 
+# 七层模型 
+# 应用层 : 提供用户服务,具体功能由程序实现
+# 表示层 : 数据的压缩优化和加密 
+# 会话层 : 建立应用链接,选择合适的传输方式
+# 传输层 : 提供传输服务,流量控制 
+# 网络层 : 路由选择,网络互联
+# 链路层 : 进行数据交换,控制具体的消息收发,链路链接
+# 物理层 : 提供物理硬件传输, 网卡, 接口设置,传输介质
+
+
+'''
+# TCP套接字服务端
+
+from socket import *
+s = socket(family=AF_INET,type=SOCK_STREAM,proto=0)
+s.bind(('0.0.0.0',8388))
+s.listen(5)
+while 1:
+    try:
+    c, addr = s.accept()
+    except KeyboardInterrupt:
+        break
+    while True:
+        print("wait....")
+        data = c.recv(1024)
+        if not data:
+            break
+        print(data.decode())
+        n = c.send("Recive: ".encode())
+        print(n)
+c.close()
+s.close()
+'''
+
+# # UDP 服务端 
+# from socket import *
+
+# sockfd = socket(AF_INET,SOCK_DGRAM)
+# sockfd.bind(('0.0.0.0',9999))
+
+# while 1:
+#     # 注意收发参数
+#     data, addr = sockfd.recvfrom(1024)
+#     if not data:
+#         break
+#     print(data.decode())
+#     sockfd.sendto("你好".encode(),addr)
+
+# sockfd.close()
+# --------------------------------------
+'''
+from socket import * 
+import time 
+
+# 创建UDP套接字
+sockfd = socket(AF_INET,SOCK_DGRAM)
+# 设置可以广播
+sockfd.setsockopt(SOL_SOCKET,SO_BROADCAST,1)
+# 地址
+dest = ('192.168.43.255',8888)
+
+while 1:
+    time.sleep(2)
+    sockfd.sendto("你好".encode(),dest)
+sockfd.close()
+'''
+# ---------------------------------
+'''
+from socket import * 
+s = socket()
+s.bind(('0.0.0.0',8818))
+s.listen(4)
+# s.setblocking(False)
+s.settimeout(5)
+while True: 
+    c, addr = s.accept()
+    data = c.recv(1024)
+    print(data.decode())
+    c.send("recive".encode())
+c.close()
+s.close()
+'''
+# ---------------------------------
+# IO 多路服用select
+from socket import * 
+from select import select
+
+# 创建套接字
+s = socket()
+s.setsockopt(SOL_SOCKET, SO_REUSEADDR,1)
+s.bind(('0.0.0.0',8888))
+s.listen(5)
+
+# 创建监听列表
+rlist=[s]
+wlist=[]
+xlist=[]
+
+
+while True:
+    # 设置监听
+    rl,wl,xl = select(rlist, wlist, xlist)
+
+    for r in rl:
+        # 判断是否是等于s
+        if r == s:
+            c, addr = r.accept()
+            rlist.append(c)
+        else:
+            data = r.recv(1024)
+            if not data:
+                rlist.remove(r)
+                r.close()
+                continue
+            print("收到:",data.decode())
+
+            wlist.append(r)
+    for w in wl:
+        w.send(b'OK')
+        wlist.remove(w)
+    for x in xl:
+        pass
+

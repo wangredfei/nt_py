@@ -4,7 +4,7 @@ from socket import *
 # 创建套接字
 s = socket()
 s.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
-s.bind(("0.0.0.0",9899))
+s.bind(("0.0.0.0",8888))
 s.listen(5)
 
 
@@ -17,8 +17,6 @@ while 1:
     # 循环监控IO事件的发生
     rs, ws, xs = select(rlist, wlist, xlist)    
 
-    # 处理发生的IO事件
-    # ???????????
     print(1)
     print(rs)
 

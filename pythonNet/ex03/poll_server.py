@@ -1,7 +1,7 @@
 from socket import *
 from select import * 
 
-# 床架你套接字作为关注IO
+# 创建你套接字作为关注IO
 
 s = socket()
 s.setsockopt(SOL_SOCKET,SO_REUSEADDR,1)
