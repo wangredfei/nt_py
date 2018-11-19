@@ -26,7 +26,8 @@ def check_events(ai_setting, screen, ship, bullets):
             check_keydown_events(event, ai_setting,screen, ship, bullets)
         elif event.type == pygame.KEYUP:
             check_keyup_events(event, ship)
-    
+        elif event.key == pygame.K_q:
+            sys.exit()
 def update_screen(screen, ai_setting, ship, bullets):
     screen.fill(ai_setting.bg_color)
     for bullet in bullets.sprites():

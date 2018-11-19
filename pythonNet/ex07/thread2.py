@@ -1,0 +1,19 @@
+from threading import Thread , currentThread
+from time import sleep
+
+# 线性函数
+def fun(sec,name):
+    print("线程函数传递")
+    sleep(sec)
+    # print("%s线程执行完毕"%name)
+    print("%s线程执行完毕"%currentThread().getName())
+    
+# 创建多个线程
+thread = []
+for i in range(3):
+    t = Thread(target=fun,args=(2,i))
+    thread.append(t)
+    t.start()
+
+for i in thread:
+    i.join()
