@@ -1,8 +1,8 @@
 from multiprocessing import Process,Pipe
 import os,time 
 
-# fd1,fd2 = Pipe()
-fd1,fd2 = Pipe(False)
+# fd1,fd2 = Pipe() # 默认双向轨道
+fd1,fd2 = Pipe(False) # 单向轨道
 
 
 def fun(name):

@@ -30,7 +30,8 @@
 - multiprocessing 中父进程可以
 
 ## 进程对象属性
-- p.name  进程名称
+
+- p.name进程名称
 - p.pid   进程号
 - p.is_alive() 进程状态(查看是否在生命周期)
 
