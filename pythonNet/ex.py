@@ -152,44 +152,68 @@ while True:
 c.close()
 s.close()
 '''
-# ---------------------------------
-# IO 多路服用select
-from socket import * 
-from select import select
+# # ---------------------------------
+# # IO 多路服用select
+# from socket import * 
+# from select import select
 
-# 创建套接字
-s = socket()
-s.setsockopt(SOL_SOCKET, SO_REUSEADDR,1)
-s.bind(('0.0.0.0',8888))
-s.listen(5)
+# # 创建套接字
+# s = socket()
+# s.setsockopt(SOL_SOCKET, SO_REUSEADDR,1)
+# s.bind(('0.0.0.0',8888))
+# s.listen(5)
 
-# 创建监听列表
-rlist=[s]
-wlist=[]
-xlist=[]
+# # 创建监听列表
+# rlist=[s]
+# wlist=[]
+# xlist=[]
 
 
-while True:
-    # 设置监听
-    rl,wl,xl = select(rlist, wlist, xlist)
+# while True:
+#     # 设置监听
+#     rl,wl,xl = select(rlist, wlist, xlist)
 
-    for r in rl:
-        # 判断是否是等于s
-        if r == s:
-            c, addr = r.accept()
-            rlist.append(c)
-        else:
-            data = r.recv(1024)
-            if not data:
-                rlist.remove(r)
-                r.close()
-                continue
-            print("收到:",data.decode())
+#     for r in rl:
+#         # 判断是否是等于s
+#         if r == s:
+#             c, addr = r.accept()
+#             rlist.append(c)
+#         else:
+#             data = r.recv(1024)
+#             if not data:
+#                 rlist.remove(r)
+#                 r.close()
+#                 continue
+#             print("收到:",data.decode())
 
-            wlist.append(r)
-    for w in wl:
-        w.send(b'OK')
-        wlist.remove(w)
-    for x in xl:
-        pass
+#             wlist.append(r)
+#     for w in wl:
+#         w.send(b'OK')
+#         wlist.remove(w)
+#     for x in xl:
+#         pass
 
+from multiprocessing import Process,Value
+import time
+import random 
+
+# 创建共享内存
+money = Value('i',5000)
+
+def boy():
+    for i in range(30):
+        time.sleep(0.05)
+        # 操作共享内存
+        money.value += random.randint(1,1599) 
+def gril():
+    for i in range(30):
+        time.sleep(0.05)
+        money.value -= random.randint(50,1000)
+
+p = Process(target=boy)
+pp = Process(target=gril)
+p.start()
+pp.start()
+p.join()
+pp.join()
+print(money.value)

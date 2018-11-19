@@ -16,7 +16,7 @@
 
 - obj.value 属性, 即共享内存的值 ---> 对该属性的读取和修改  | 即修改共享内存
 
-## `obj = Array(ctype,obj)
+## `obj = Array(ctype,obj)`
 - 功能: 创建共享内存
 - 参数:
     - ctype 要存储的数据类型
@@ -82,7 +82,7 @@
 ## `t.join()` 阻塞等待回收线程
 
 ## 线程对象属性
-- t.name 线程名称
+- t. name    线程名称
 - t.setName 设置名称
 - t.getName 获取名称
 - t.is_alive() 线程状态
@@ -117,7 +117,7 @@
 - 线程Event
 ### `e = Event()`
 - 创建事件对象(事件对象初始为未设置状态)
-### `e.wait([timeout])
+### `e.wait([timeout])`
 - 如果e是未设置的状态则阻塞,如果e是被设置状态则不阻塞
 - 参数: timeout 超时事件 
 ### `e.set()`
