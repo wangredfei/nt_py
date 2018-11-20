@@ -39,7 +39,7 @@ while 1:
     rw = RandomWalk()
     rw.fill_walk()
     # 设置绘图窗口的尺寸 figure 制定图标的宽度高度分辨率和背景色
-    plt.figure(figsize=(10,6),dpi=128)
+    plt.figure(figsize=(10,6))
     
 
     # 给点着色
