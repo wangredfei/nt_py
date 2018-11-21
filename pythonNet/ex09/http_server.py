@@ -61,19 +61,28 @@ class HTTPServer(object):
             self.get_html(connfd,get_request)
 
     def get_html(self,connfd,get_request):
+        if get_request == "/":
+            get_request = "index1.html"
         try:
-            fd = open("/home/tarena/nt_py/pythonNet/ex09/static/"+get_request, "rb")
+            fd = open("/home/tarena/nt_py/pythonNet/ex09/static/"+get_request, "r")
         except Exception as e:
-            print(e)
-            connfd.send(b'404')
+            response = "HTTP/1.1 404 Not Found\r\n"
+            response += "Content-Type: text/html\r\n"
+            response += "\r\n"
+            response += "<h1>Not Found!!!</h1>"
 
         else:
+            response = "HTTP/1.1 200 OK\r\n"
+            response += "Content-Type: text/html\r\n"
+            response += "\r\n"
             while True:
                 data = fd.read(4096)
                 if not data:
                     break
-                connfd.send(data)
-                
+                response += data
+        finally:
+            connfd.send(response.encode())
+
 
 
 # 提供服务器地址和静态文件路径
