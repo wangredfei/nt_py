@@ -24,10 +24,13 @@ def main():
     num = []
     for _ in range(4):
         num.append(random.randint(0,9))
+        
     # 计数
     count = 0
+
     # 进入循环开始游戏
     while count<7:
+        # 输入
         try:
             n = input("请输入一个四位数")
             # 如果输入是字母就except
@@ -43,7 +46,8 @@ def main():
 
         # 判断并输出
         l = judge_num(num,n)
-        print(l)
+
+        # 输出
         if l[1] == 4:
             print("答对了")
             break
