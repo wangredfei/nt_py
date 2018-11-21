@@ -8,7 +8,6 @@
     5. 当客户端退出时处理对应线程
 
 # 集成模块完成多进程/线程socket并发
-python2 SocketServer
 python3 SocketServer
 
 - 功能 : 通过模块提供的不同类的组合完成多进程或者多线程的tcp/udp并发程序
@@ -38,7 +37,72 @@ python3 SocketServer
 1. 使用tcp套接字,socket多线程并发
 2. 类的封装: 使用类实例化对象,对象调用启动接口
 3. http请求和响应格式
-    - 响应头 GET  /abc.html HTTP/101
-    - 响应行
+- 请求:
+    - 请求行  GET  /abc.html  HTTP/1.1 
+    - 请求头
     - 空行
-    - 响应体
+    - 请求体
+    
+- 响应:
+    - 响应行  HTTP/1.1   200  OK 
+	- 响应头
+	- 空行
+	- 响应体  具体内容
+
+# 协程
+## 定义
+- 纤程,微线程, 是为非抢占式多任务产生子程序的计算机程序组件
+- 协程允许不同入口点,在不同位置暂停或者开始执行,简单来说,协程就是可以暂停执行的函数
+
+***yield 是实现协程的基本关键字***
+
+## 原理
+- 记录一个函数栈的上下文,进行协程的切换调度,当一个协程函数暂停时会将上下文栈帧保存起来,在切换回来时恢复到原来的执行位置,从而继续执行
+- 协程优点:
+    1. 协程可以用时处理多个任务
+    2. 协程本质是单线程,资源消耗少
+    3. 协程无需切换的开销,无需同步互斥
+
+- 协程缺点:
+    1. 无法利用计算机多核,不能进行并行处理
+
+## greenlet
+- 安装: 
+    - sudo pip3 install greenlet
+
+- greenlet.greenlet(func)
+    - 功能 :创建协程对象
+    - 参数 : 协程函数
+- g.switch()
+    - 功能:启动线程函数
+
+## gevent
+- 安装:
+    - sudo pip3 install gevent
+- gevent.spawn(func,argv)
+    - 功能: 生成协程对象
+    - 参数 
+        - func协程函数
+        - argv给协程函数传参
+*** 当func函数中遇到gevent类型阻塞则会跳出
+
+- gevent.joinall(list,[timeout])
+    - 功能:阻塞等待回收协程
+    - 参数: 
+        - list 协程对象列表
+        - timeout 超时时间
+    
+- gevent.sleep(sec)
+    - 功能: 提供协程阻塞
+
+- from gevent import monkey
+    - monkey.patch_all()
+
+    - 功能: 修改原有的IO阻塞行为,可以出发携程事件跳转
+    * 必须在模块导入前设置
+
+#作业 :  
+1. 总结进程线程网络内容知识点
+2. 复习 pymysql 使用
+3. 看 ftp 和 聊天室 思维流程
+4. httpserver 第二版 

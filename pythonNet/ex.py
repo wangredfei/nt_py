@@ -193,27 +193,42 @@ s.close()
 #     for x in xl:
 #         pass
 
-from multiprocessing import Process,Value
-import time
-import random 
+# from multiprocessing import Process,Value
+# import time
+# import random 
 
-# 创建共享内存
-money = Value('i',5000)
+# # 创建共享内存
+# money = Value('i',5000)
 
-def boy():
-    for i in range(30):
-        time.sleep(0.05)
-        # 操作共享内存
-        money.value += random.randint(1,1599) 
-def gril():
-    for i in range(30):
-        time.sleep(0.05)
-        money.value -= random.randint(50,1000)
+# def boy():
+#     for i in range(30):
+#         time.sleep(0.05)
+#         # 操作共享内存
+#         money.value += random.randint(1,1599) 
+# def gril():
+#     for i in range(30):
+#         time.sleep(0.05)
+#         money.value -= random.randint(50,1000)
 
-p = Process(target=boy)
-pp = Process(target=gril)
-p.start()
-pp.start()
-p.join()
-pp.join()
-print(money.value)
+# p = Process(target=boy)
+# pp = Process(target=gril)
+# p.start()
+# pp.start()
+# p.join()
+# pp.join()
+# print(money.value)
+
+def fun():
+    print("启动生成器")
+    for i in range(5):
+        yield i
+    print("结束生成器")
+
+g = fun()
+print(next(g))
+print(next(g))
+print(next(g))
+print(next(g))
+print(next(g))
+print(next(g))
+g.close()
