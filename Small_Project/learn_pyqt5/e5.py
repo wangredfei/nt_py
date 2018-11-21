@@ -1,4 +1,4 @@
-'''消息盒子'''
+'''消息盒子/提示框'''
 import sys
 from  PyQt5.QtWidgets import QWidget, QMessageBox, QApplication
 
