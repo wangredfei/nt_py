@@ -13,7 +13,7 @@ class Example(QWidget):
         self.initUI()
     
     def initUI(self):
-        QToolTip.setFont(QFont("SansSerif", 10))
+        QToolTip.setFont(QFont("SansSerif", 30))
         # 设置提示框的字体
         self.setToolTip("This is a QWidge widget")
         # 创建提示框可以使用富文本格式的内容
@@ -23,7 +23,7 @@ class Example(QWidget):
         btn.setToolTip("This is a QPushButton widget")
         # 创建一个按钮并添加提示框
         btn.resize(btn.sizeHint())
-        btn.move(50,50)
+        btn.move(150,50)
         # 调整按钮大小,sizeHint提供一个默认的按钮大小
 
 
