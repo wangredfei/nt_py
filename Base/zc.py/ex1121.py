@@ -8,8 +8,8 @@ def judge_num(num,n):
 
     # 用于数字对的数
     l1 = []
-    for i in n:
-        if i in num:
+    for i in num:
+        if i in n:
             l1.append(l1)
     # 用于存储位置数值都对的数
     l2 = []
@@ -24,7 +24,7 @@ def main():
     num = []
     for _ in range(4):
         num.append(random.randint(0,9))
-        
+
     # 计数
     count = 0
 
@@ -61,3 +61,4 @@ def main():
         print("还有",7-count,"次")
 
 main()
+# 由计算机随机一个四位数, 猜这个四位数是多少,输入后先判断数字中有几个数是猜对的,再判断有几个位置也对的,将结果显示出来,7次机会
