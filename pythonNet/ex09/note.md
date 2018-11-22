@@ -83,8 +83,8 @@ python3 SocketServer
     - 功能: 生成协程对象
     - 参数 
         - func协程函数
-        - argv给协程函数传参
-*** 当func函数中遇到gevent类型阻塞则会跳出
+        - argv给协程函数传参  
+***当func函数中遇到gevent类型阻塞则会跳出***
 
 - gevent.joinall(list,[timeout])
     - 功能:阻塞等待回收协程
