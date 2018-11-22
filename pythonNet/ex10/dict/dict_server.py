@@ -13,7 +13,9 @@ def do_child(c,db):
     '''接受判断'''
     while True:
         data = c.recv(1024).decode()
-        if data[0] == "R":
+        if not data:
+            break
+        elif data[0] == "R":
             do_register(c, db, data)        
         elif data[0] == 'L':
             do_login(c, db, data)
