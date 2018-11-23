@@ -21,6 +21,7 @@ def menu2():
         --1.查词  2.历史记录  3.注销--
         ===============================
         ''')
+
 def do_register(s):
     while True:
         name = input("输入您的姓名")
@@ -96,6 +97,7 @@ def do_hist(s,name):
         print("没有记录")
     else:
         print(data)
+
 def main():
     s = socket()
     s.setsockopt(SOL_SOCKET, SO_REUSEADDR,1)
@@ -123,7 +125,15 @@ def main():
             s.send(b'Q')
             s.close()
             sys.exit("谢谢使用")
-      
 
-        
+
+
+
+
+
+
+
+
+  
+      
 main()
